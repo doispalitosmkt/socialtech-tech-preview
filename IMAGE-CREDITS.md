@@ -54,3 +54,7 @@ All photographs are illustrative. No photograph depicts the client engagement. I
 | IMG-05, IMG-05b | Locally composed OG cards, SocialTech tokens and approved copy |
 
 Generated image prompt: see GENERATION-PROMPTS.md. Photo subjects and accurate alternative text substitutions are recorded in docs/CHANGELOG-codex.md.
+
+## Client copy revision, 29 October 2026
+
+Three distinct illustrative photographs generated with built-in Codex ImageGen, stored in client-review-2026-10/: service-07-virtual-desktops.png, service-08-experience.png, sector-specialist-partners.png. These do not depict an actual client engagement. Full prompts: client-review-2026-10/ASSET-PROMPTS.md.
