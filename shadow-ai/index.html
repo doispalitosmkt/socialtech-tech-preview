@@ -966,49 +966,50 @@ html:not(.has-ui-js) #quiz-play{display:none}
     <div class="form-panel">
       <div class="form-success" id="form-success" role="status" tabindex="-1">
         <span class="icon"><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>
-        <h3 id="form-success-title">Your email draft is ready.</h3>
+        <h3 id="form-success-title">Your enquiry has been submitted.</h3>
         <p id="form-success-text"></p>
-        <a class="button button--primary" id="email-draft" href="mailto:contact@socialtech.au">Open email draft</a>
+        <a class="button button--primary" id="email-draft" href="mailto:contact@socialtech.au" hidden>Open email draft</a>
         <a class="button button--secondary" href="#assessment" style="color:var(--color-ink-900)"><span>Back to the assessment</span></a>
       </div>
 
       <noscript><p>Please email <a href="mailto:contact@socialtech.au">contact@socialtech.au</a> to discuss your requirements. The assessment runs in your browser and needs JavaScript.</p></noscript>
-      <form id="contact-form" hidden novalidate>
-        <div class="form-setup-note" id="form-setup-note">This form prepares an email to contact@socialtech.au. Open the draft in your email app and press Send to submit your enquiry.</div>
+      <form id="contact-form" action="enquiry.php" method="post" hidden novalidate>
+        <input type="hidden" name="submission_id" value="">
+        <div class="form-setup-note" id="form-setup-note">Your enquiry is sent directly to our technical team.</div>
         <div class="result-chip" id="result-chip"><span class="mono">Result attached</span><span id="result-chip-text"></span></div>
         <div class="form-error" id="form-error" role="alert" hidden>Your enquiry was not sent. Please try again, or email us at <a href="mailto:contact@socialtech.au">contact@socialtech.au</a>.</div>
         <div class="form-grid">
-          <div class="field"><label for="f-name">Your name *</label><input id="f-name" name="name" autocomplete="name" required><p class="field-error" hidden></p></div>
-          <div class="field"><label for="f-email">Work email *</label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required><p class="field-error" hidden></p></div>
-          <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
-          <div class="field"><label for="f-org">Organisation *</label><input id="f-org" name="organisation" autocomplete="organization" required><p class="field-error" hidden></p></div>
+          <div class="field"><label for="f-name">Your name *</label><input id="f-name" name="name" maxlength="254" autocomplete="name" required><p class="field-error" hidden></p></div>
+          <div class="field"><label for="f-email">Work email *</label><input id="f-email" name="email" maxlength="254" type="email" autocomplete="email" inputmode="email" required><p class="field-error" hidden></p></div>
+          <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" maxlength="254" type="tel" autocomplete="tel"></div>
+          <div class="field"><label for="f-org">Organisation *</label><input id="f-org" name="organisation" maxlength="254" autocomplete="organization" required><p class="field-error" hidden></p></div>
           <div class="field"><label for="f-sector">Sector</label>
             <select id="f-sector" name="sector"><option value="">Select…</option><option>Utilities</option><option>Government</option><option>Resources and mining</option><option>Healthcare</option><option>Logistics and transport</option><option>Construction</option><option>Education</option><option>Partner or service provider</option><option>Other</option></select></div>
           <div class="field"><label for="f-fleet">Fleet size</label>
-            <select id="f-fleet" name="fleet"><option value="">Select…</option><option>Under 50 devices</option><option>50 to 250</option><option>250 to 1,000</option><option>1,000 to 5,000</option><option>More than 5,000</option></select></div>
+            <select id="f-fleet" name="fleet_size"><option value="">Select…</option><option>Under 50 devices</option><option>50 to 250</option><option>250 to 1,000</option><option>1,000 to 5,000</option><option>More than 5,000</option></select></div>
           <div class="field field--full"><label for="f-platform">Current platform</label>
-            <select id="f-platform" name="platform"><option value="">Select…</option><option>Omnissa Workspace ONE (own tenancy)</option><option>Workspace ONE, managed by our carrier or reseller</option><option>Omnissa Horizon</option><option>Microsoft Intune</option><option>Other</option><option>None yet</option><option>Not sure</option></select></div>
+            <select id="f-platform" name="current_platform"><option value="">Select…</option><option>Omnissa Workspace ONE (own tenancy)</option><option>Workspace ONE, managed by our carrier or reseller</option><option>Omnissa Horizon</option><option>Microsoft Intune</option><option>Other</option><option>None yet</option><option>Not sure</option></select></div>
           <fieldset class="field field--full checkbox-group" id="needs-group"><legend>What do you need? *</legend>
             <div class="checkbox-options">
-              <label><input type="checkbox" name="need" value="Shadow AI Health Check" id="need-hc"> Shadow AI Health Check</label>
-              <label><input type="checkbox" name="need" value="Inventory of AI in use"> Inventory of AI in use</label>
-              <label><input type="checkbox" name="need" value="AI use policy"> AI use policy</label>
-              <label><input type="checkbox" name="need" value="Workspace ONE rollout"> Workspace ONE rollout</label>
-              <label><input type="checkbox" name="need" value="Platform migration assessment"> Platform migration assessment</label>
-              <label><input type="checkbox" name="need" value="Virtual desktops (Horizon)"> Virtual desktops (Horizon)</label>
-              <label><input type="checkbox" name="need" value="Ongoing support"> Ongoing support</label>
-              <label><input type="checkbox" name="need" value="Something else"> Something else</label>
+              <label><input type="checkbox" name="needs[]" value="Shadow AI Health Check" id="need-hc"> Shadow AI Health Check</label>
+              <label><input type="checkbox" name="needs[]" value="Inventory of AI in use"> Inventory of AI in use</label>
+              <label><input type="checkbox" name="needs[]" value="AI use policy"> AI use policy</label>
+              <label><input type="checkbox" name="needs[]" value="Workspace ONE rollout"> Workspace ONE rollout</label>
+              <label><input type="checkbox" name="needs[]" value="Platform migration assessment"> Platform migration assessment</label>
+              <label><input type="checkbox" name="needs[]" value="Virtual desktops (Horizon)"> Virtual desktops (Horizon)</label>
+              <label><input type="checkbox" name="needs[]" value="Ongoing support"> Ongoing support</label>
+              <label><input type="checkbox" name="needs[]" value="Something else"> Something else</label>
             </div>
             <p class="field-error" id="needs-error" hidden>Please choose at least one option.</p>
           </fieldset>
           <div class="field field--full"><label for="f-time">Timeframe</label>
             <select id="f-time" name="timeframe"><option value="">Select…</option><option>Within 3 months</option><option>3 to 6 months</option><option>6 to 12 months</option><option>Just exploring</option></select></div>
-          <div class="field field--full"><label for="f-msg">Anything else we should know?</label><textarea id="f-msg" name="message"></textarea></div>
+          <div class="field field--full"><label for="f-msg">Anything else we should know?</label><textarea id="f-msg" name="message" maxlength="11000"></textarea></div>
           <div class="field field--full attach-field" id="attach-field" hidden><label><input type="checkbox" id="f-attach" checked> Attach my assessment result to this enquiry</label></div>
-          <div class="honeypot" aria-hidden="true"><label>Company website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+          <div class="honeypot" aria-hidden="true"><label>Company website <input name="company_website" tabindex="-1" autocomplete="off"></label></div>
         </div>
-        <p class="privacy-note">We use these details only to respond to your enquiry. Your assessment stays in this browser unless you choose to include it in your email. <a href="/tech/privacy/">Privacy notice</a>.</p>
-        <div class="form-submit"><button class="button button--primary" type="submit"><span>Prepare email</span><span class="icon"><svg aria-hidden="true" focusable="false"><use href="#i-arrow-ur"/></svg></span></button></div>
+        <p class="privacy-note">We use these details only to respond to your enquiry. Your assessment stays in this browser unless you choose to include it in your enquiry. <a href="/shadow-ai/privacy/">Privacy notice</a>.</p>
+        <div class="form-submit"><button class="button button--primary" type="submit"><span>Send enquiry</span><span class="icon"><svg aria-hidden="true" focusable="false"><use href="#i-arrow-ur"/></svg></span></button></div>
       </form>
     </div>
   </div>
@@ -1033,7 +1034,7 @@ html:not(.has-ui-js) #quiz-play{display:none}
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 SocialTech Creative Solutions · <a href="/tech/">Technology Services</a> · <a href="/tech/privacy/">Privacy notice</a></span>
+      <span>© 2026 SocialTech Creative Solutions · <a href="/tech/">Technology Services</a> · <a href="/shadow-ai/privacy/">Privacy notice</a></span>
       <span>Omnissa, Workspace ONE and Horizon are trademarks of Omnissa, LLC or its affiliates. Microsoft Intune is a trademark of Microsoft Corporation.</span>
     </div>
   </div>
@@ -1043,7 +1044,7 @@ html:not(.has-ui-js) #quiz-play{display:none}
 
 <script>
 /* Shadow AI landing page ,  comportamento.
-   No dependencies. Assessment and form entries remain in the browser until the visitor sends their prepared email. */
+   No dependencies. Assessment answers are included only when the visitor chooses to attach them to a submitted enquiry. */
 (function () {
   'use strict';
   document.documentElement.classList.add('has-ui-js');
@@ -1051,7 +1052,7 @@ html:not(.has-ui-js) #quiz-play{display:none}
   /* ---------- Configuration -----------------------------------------------
      FORM_ENDPOINT: if set, the form sends a JSON POST to this URL.
      If empty, it opens the user's email app (mailto) with the details filled in. */
-  var FORM_ENDPOINT = '';
+  var FORM_ENDPOINT = location.hostname === 'socialtech.au' ? '/shadow-ai/enquiry.php' : '';
   var FORM_EMAIL = 'contact@socialtech.au';
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -1509,56 +1510,91 @@ html:not(.has-ui-js) #quiz-play{display:none}
 
   renderStep(false);
 
-  /* ======================================================================
-     FORM
-     ====================================================================== */
+  /* Enquiry delivery. The production endpoint keeps the recipient server-side. */
   var form = $('#contact-form');
   form.hidden = false;
+  var submitButton = form.querySelector('button[type=submit]');
+  var submitLabel = submitButton.querySelector('span');
+  var sending = false, pendingSnapshot = '', pendingId = '';
+  if (!FORM_ENDPOINT) {
+    $('#form-setup-note').textContent = 'Preview only. This form prepares an email to contact@socialtech.au. Open the draft in your email app and press Send.';
+    submitLabel.textContent = 'Prepare email';
+  }
   function fieldErr(input, msg) {
     var p = input.parentElement.querySelector('.field-error');
     input.setAttribute('aria-invalid', msg ? 'true' : 'false');
     if (p) { p.textContent = msg || ''; p.hidden = !msg; }
   }
+  function showFormResult(title, message) {
+    form.hidden = true;
+    $('#form-success-title').textContent = title;
+    $('#form-success-text').textContent = message;
+    var result = $('#form-success'); result.classList.add('is-on'); result.focus();
+  }
+  $('#f-attach').addEventListener('change', function () {
+    $('#result-chip .mono').textContent = this.checked ? 'Result attached' : 'Result not attached';
+  });
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    if (sending) return;
     var f = form.elements, ok = true, first = null;
+    $('#form-error').hidden = true;
     function bad(input, msg) { fieldErr(input, msg); ok = false; if (!first) first = input; }
-    ['name', 'organisation'].forEach(function (k) { if (!f[k].value.trim()) bad(f[k], 'This field is required.'); else fieldErr(f[k], ''); });
-    var em = f.email.value.trim();
-    if (!em) bad(f.email, 'This field is required.'); else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) bad(f.email, 'Please enter a valid email address.'); else fieldErr(f.email, '');
-    var needs = $$('input[name="need"]:checked', form).map(function (c) { return c.value; });
+    ['name', 'organisation'].forEach(function (k) {
+      if (!f[k].value.trim()) bad(f[k], 'This field is required.'); else fieldErr(f[k], '');
+    });
+    var email = f.email.value.trim();
+    if (!email) bad(f.email, 'This field is required.');
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) bad(f.email, 'Please enter a valid email address.');
+    else fieldErr(f.email, '');
+    var needs = $$('input[name="needs[]"]:checked', form).map(function (c) { return c.value; });
     $('#needs-error').hidden = needs.length > 0;
-    if (!needs.length) { ok = false; if (!first) first = $('input[name="need"]', form); }
-    if (f.website.value) return; /* honeypot */
+    $('#needs-group').setAttribute('aria-invalid', needs.length ? 'false' : 'true');
+    if (!needs.length) { ok = false; if (!first) first = $('input[name="needs[]"]', form); }
+    if (f.company_website.value) return;
     if (!ok) { if (first) first.focus(); return; }
-
     var data = {
-      name: f.name.value.trim(), email: em, phone: f.phone.value.trim(), organisation: f.organisation.value.trim(),
-      sector: f.sector.value, fleet: f.fleet.value, platform: f.platform.value, timeframe: f.timeframe.value,
-      needs: needs, message: f.message.value.trim(), source: 'shadow-ai-landing'
+      name: f.name.value.trim(), email: email, phone: f.phone.value.trim(), organisation: f.organisation.value.trim(),
+      sector: f.sector.value, fleet_size: f.fleet_size.value, current_platform: f.current_platform.value,
+      timeframe: f.timeframe.value, needs: needs, message: f.message.value.trim(), company_website: f.company_website.value
     };
-    if (quiz.result && $('#f-attach').checked) data.quiz = { index: quiz.result.index, level: quiz.result.level.badge, scores: quiz.result.scores };
-
-    function success(msg) {
-      form.hidden = true;
-      var s = $('#form-success'); s.classList.add('is-on'); $('#form-success-text').textContent = msg; s.focus();
-    }
-    if (FORM_ENDPOINT) {
-      var btn = form.querySelector('button[type=submit]'); btn.disabled = true;
-      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
-        .then(function (r) { if (!r.ok) throw 0; success('Your enquiry is with our technical team. We will reply within one business day.'); })
-        .catch(function () { $('#form-error').hidden = false; btn.disabled = false; });
-    } else {
+    if (quiz.result && $('#f-attach').checked) data.quiz = { scores: quiz.result.scores };
+    if (!FORM_ENDPOINT) {
       var body = ['Name: ' + data.name, 'Email: ' + data.email, 'Phone: ' + data.phone, 'Organisation: ' + data.organisation,
-        'Sector: ' + data.sector, 'Fleet size: ' + data.fleet, 'Current platform: ' + data.platform, 'Timeframe: ' + data.timeframe,
-        'Needs: ' + needs.join(', '), '', data.message, ''];
-      if (data.quiz) body.push('---', summaryText());
-      var url = 'mailto:' + FORM_EMAIL + '?subject=' + encodeURIComponent('Shadow AI enquiry (' + data.organisation + ')') + '&body=' + encodeURIComponent(body.join('\n'));
-      $('#email-draft').href = url;
-      success('Open the draft in your email app, then press Send. Nothing has been sent from this page.');
+        'Sector: ' + data.sector, 'Fleet size: ' + data.fleet_size, 'Current platform: ' + data.current_platform,
+        'Timeframe: ' + data.timeframe, 'Needs: ' + needs.join(', '), '', data.message];
+      if (data.quiz) body.push('', summaryText());
+      $('#email-draft').href = 'mailto:' + FORM_EMAIL + '?subject=' + encodeURIComponent('Shadow AI enquiry (' + data.organisation + ')') + '&body=' + encodeURIComponent(body.join('\n'));
+      $('#email-draft').hidden = false;
+      showFormResult('Your email draft is ready.', 'Open the draft in your email app, then press Send. Nothing has been sent from this preview.');
       form.hidden = false;
+      return;
     }
+    var snapshot = JSON.stringify(data);
+    if (snapshot !== pendingSnapshot) {
+      pendingId = crypto.randomUUID();
+      pendingSnapshot = snapshot;
+    }
+    data.submission_id = pendingId;
+    f.submission_id.value = pendingId;
+    sending = true; submitButton.disabled = true; submitLabel.textContent = 'Sending…';
+    form.setAttribute('aria-busy', 'true');
+    fetch(FORM_ENDPOINT, {
+      method: 'POST', credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data)
+    }).then(function (response) {
+      return response.json().then(function (result) {
+        if (!response.ok || result.success !== true) throw new Error('Enquiry was not accepted');
+        showFormResult('Your enquiry has been submitted.', 'Thank you. Our technical team will reply within one business day.');
+      });
+    }).catch(function () {
+      $('#form-error').hidden = false;
+    }).finally(function () {
+      sending = false; submitButton.disabled = false; submitLabel.textContent = 'Send enquiry';
+      form.removeAttribute('aria-busy');
+    });
   });
+
 })();
 
 </script>
