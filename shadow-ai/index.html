@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shadow AI: find out how exposed you are | SocialTech Technology Services</title>
 <meta name="description" content="Your people are already using AI without IT knowing. Learn what Shadow AI is, take the 6-step assessment, and see how Omnissa Workspace ONE and Elara, with SocialTech, bring visibility and control.">
-<meta name="robots" content="noindex,follow,max-image-preview:large">
+<meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#0C1826">
 <link rel="canonical" href="https://socialtech.au/shadow-ai/">
 <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -466,7 +466,7 @@ html:not(.has-ui-js) #quiz-play{display:none}
   <symbol id="i-check" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol>
 </svg>
 
-<aside class="draft-banner" aria-label="Draft status">Review notes. Shadow AI Health Check scope and Elara availability require confirmation. <a href="#" id="review-link">View review notes</a></aside>
+
 <a href="#main" class="skip-link">Skip to content</a>
 <div class="page-progress" aria-hidden="true"></div>
 
@@ -789,7 +789,7 @@ html:not(.has-ui-js) #quiz-play{display:none}
         <tr><th scope="row">Elara <span class="beta">Beta waitlist</span></th><td>Discovers the AI apps, models, agents and MCP tools in use. The AI Gateway sets which people, apps and agents can reach which models, under a single authority model.</td><td class="dim">R3 · R5</td></tr>
       </tbody>
     </table>
-    <span class="review-note" data-review="P30" hidden>P30: Elara was announced on 29 September 2026. Omnissa currently lists a beta waitlist. Confirm regional and commercial availability with Omnissa before promising timelines.</span>
+    
   </div>
 </section>
 
@@ -874,7 +874,7 @@ html:not(.has-ui-js) #quiz-play{display:none}
       </tbody>
     </table>
 
-    <span class="review-note" data-review="P25" hidden>P25: Carrier-neutral wording follows Felipe’s confirmation. Transition outcomes remain subject to assessment.</span>
+    
 
     <div class="compare-notes">
       <p><strong>Note.</strong> A comparison of service models, not of product performance. The technology behind carrier services is typically Workspace ONE itself; the difference is in contract, access, enabled features and specialisation. Validate each row against your own contract.</p>
@@ -918,7 +918,7 @@ html:not(.has-ui-js) #quiz-play{display:none}
           <li>A recommended AI use policy and approval workflow</li>
           <li>A 30/60/90-day plan and written recommendation, including when the answer is to change nothing</li>
         </ul>
-        <span class="review-note" data-review="P21" hidden>P21: Confirm fixed-price offer, currency and GST, delivery days, start conditions and scope limits. Price and deadline remain outside the normal page.</span>
+        
         <a class="button button--primary" href="#contact" data-cta="health-check"><span>Book a Shadow AI Health Check</span><span class="icon"><svg aria-hidden="true" focusable="false"><use href="#i-arrow-ur"/></svg></span></a>
       </article>
     </div>
@@ -973,7 +973,7 @@ html:not(.has-ui-js) #quiz-play{display:none}
       </div>
 
       <noscript><p>Please email <a href="mailto:contact@socialtech.au">contact@socialtech.au</a> to discuss your requirements. The assessment runs in your browser and needs JavaScript.</p></noscript>
-      <form id="contact-form" action="enquiry.php" method="post" hidden novalidate>
+      <form id="contact-form" hidden>
         <input type="hidden" name="submission_id" value="">
         <div class="form-setup-note" id="form-setup-note">Your enquiry is sent directly to our technical team.</div>
         <div class="result-chip" id="result-chip"><span class="mono">Result attached</span><span id="result-chip-text"></span></div>
@@ -1008,7 +1008,7 @@ html:not(.has-ui-js) #quiz-play{display:none}
           <div class="field field--full attach-field" id="attach-field" hidden><label><input type="checkbox" id="f-attach" checked> Attach my assessment result to this enquiry</label></div>
           <div class="honeypot" aria-hidden="true"><label>Company website <input name="company_website" tabindex="-1" autocomplete="off"></label></div>
         </div>
-        <p class="privacy-note">We use these details only to respond to your enquiry. Your assessment stays in this browser unless you choose to include it in your enquiry. <a href="/shadow-ai/privacy/">Privacy notice</a>.</p>
+        <p class="privacy-note">We use these details only to respond to your enquiry. Your assessment stays in this browser unless you choose to include it in your enquiry. <a href="/socialtech-tech-preview/shadow-ai/privacy/">Privacy notice</a>.</p>
         <div class="form-submit"><button class="button button--primary" type="submit"><span>Send enquiry</span><span class="icon"><svg aria-hidden="true" focusable="false"><use href="#i-arrow-ur"/></svg></span></button></div>
       </form>
     </div>
@@ -1034,7 +1034,7 @@ html:not(.has-ui-js) #quiz-play{display:none}
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 SocialTech Creative Solutions · <a href="/tech/">Technology Services</a> · <a href="/shadow-ai/privacy/">Privacy notice</a></span>
+      <span>© 2026 SocialTech Technology Services · <a href="/socialtech-tech-preview/tech/">Technology Services</a> · <a href="/socialtech-tech-preview/shadow-ai/privacy/">Privacy notice</a></span>
       <span>Omnissa, Workspace ONE and Horizon are trademarks of Omnissa, LLC or its affiliates. Microsoft Intune is a trademark of Microsoft Corporation.</span>
     </div>
   </div>
@@ -1513,6 +1513,7 @@ html:not(.has-ui-js) #quiz-play{display:none}
   /* Enquiry delivery. The production endpoint keeps the recipient server-side. */
   var form = $('#contact-form');
   form.hidden = false;
+  form.noValidate = true;
   var submitButton = form.querySelector('button[type=submit]');
   var submitLabel = submitButton.querySelector('span');
   var sending = false, pendingSnapshot = '', pendingId = '';
